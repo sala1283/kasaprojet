@@ -1,0 +1,41 @@
+@import '../../styles/_colors.scss';
+
+header {
+  nav {
+    display: flex;
+    justify-content: space-between;
+
+    img {
+      width: 200px;
+
+      @media (max-width: 768px) {
+        width: 125px;
+      }
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      list-style: none;
+
+      li {
+        a {
+          text-decoration: none;
+          border-bottom: 1px solid transparent;
+          color: #000;
+          font-weight: 600;
+          transition: color 0.3s, border-bottom 0.3s;
+
+          @media (max-width: 768px) {
+            font-size: 12px;
+            text-transform: uppercase;
+          }
+        }
+        a.active {
+          border-color: $primary-color;
+        }
+      }
+    }
+  }
+}

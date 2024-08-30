@@ -1,0 +1,159 @@
+@import '../../styles/_colors.scss';
+
+.logement-info {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 500;
+    color: $primary-color;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+
+  &__location {
+    font-size: 1.5rem;
+    font-weight: 500;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+
+  &__host {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+
+    @media (max-width: 768px) {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    figure {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-items: center;
+      gap: 10px;
+
+      img {
+        width: 64px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        margin-right: 10px;
+
+        @media (max-width: 768px) {
+          margin-right: 0;
+          width: 40px;
+        }
+      }
+
+      figcaption {
+        font-size: 18px;
+        text-align: right;
+        padding-right: 15px;
+        white-space: wrap;
+        color: $primary-color;
+
+        @media (max-width: 768px) {
+          padding-right: 0;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  &__tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      gap: 5px;
+    }
+
+    & > * {
+      padding: 5px 20px;
+      min-width: 115px;
+      border-radius: 10px;
+      background-color: $primary-color;
+      color: white;
+
+      @media (max-width: 768px) {
+        min-width: 80px;
+      }
+    }
+  }
+
+  &__collapse {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 20px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.rating {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+
+  &__item {
+    font-size: 25px;
+    color: #ccc;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+
+    & > * {
+      transition: scale 0.25s;
+    }
+  }
+
+  @for $i from 1 through 5 {
+    .star-#{$i} {
+      animation: stagger-animation 0.5s ease-in-out #{$i * 0.1}s forwards;
+    }
+  }
+}
+
+@keyframes stagger-animation {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.2;
+  }
+  100% {
+    color: $primary-color;
+  }
+}

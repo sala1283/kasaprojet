@@ -1,0 +1,62 @@
+@use 'sass:color';
+@import '../../styles/_colors.scss';
+
+@mixin transition($property, $duration, $ease) {
+  transition: $property $duration $ease;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+@mixin padding($padding) {
+  padding: $padding;
+}
+
+.collapse {
+  .collapsible {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    @include flex-center;
+    @include padding(10px 20px);
+    @include border-radius(5px);
+    background-color: $primary-color;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    z-index: 10;
+
+    i {
+      @include transition(transform, 0.3s, ease);
+
+      &.rotate {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .collapse-content {
+    @include border-radius(5px);
+    max-height: 0;
+    overflow: hidden;
+    @include transition(max-height, 0.3s, ease);
+    border: 1px solid rgba($primary-color, 0.3);
+    transform: translate(0, -10px);
+
+    & > * {
+      @include padding(1.7rem 1rem);
+      font-size: medium;
+      font-weight: medium;
+      color: black;
+      list-style: none;
+      line-height: 1.5;
+    }
+  }
+}
